@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <title>CyberSafe Toolkit</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar glass">
+      <a href="#dashboard" class="brand">
+        <span class="brand-icon">⬡</span>
+        <span>
+          <strong>CyberSafe</strong>
+          <small>TOOLKIT</small>
+        </span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+      <nav>
+        <button class="nav-btn active" data-page="dashboard">⌂ Dashboard</button>
+        <button class="nav-btn" data-page="password">⚿ Password Lab</button>
+        <button class="nav-btn" data-page="inspector">⌕ URL Inspector</button>
+        <button class="nav-btn" data-page="tips">✧ Security Guide</button>
+        <button class="nav-btn" data-page="about">ⓘ About & Privacy</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span> Local tools ready
+        <small>Your privacy matters.</small>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">PERSONAL SECURITY CENTER</span>
+          <h1 id="page-title">Your digital safety.</h1>
+        </div>
+        <button class="glass-button" id="quick-generate">＋ New password</button>
+      </header>
+
+      <section class="page" id="dashboard">
+        <section class="hero glass">
+          <div class="hero-copy">
+            <span class="eyebrow">A SAFER DIGITAL WORLD</span>
+            <h2>Stay sharp.<br><span>Stay secure.</span></h2>
+            <p>Your personal security workspace for stronger passwords, suspicious URL checks and safer online habits.</p>
+            <button class="primary-button" data-open="password">Explore tools ↗</button>
+          </div>
+          <div class="hero-shield" aria-hidden="true">⬡</div>
+        </section>
+
+        <div class="stats">
+          <article class="glass stat">
+            <span>Available tools</span>
+            <strong>4</strong>
+            <small>Ready to use</small>
+          </article>
+          <article class="glass stat">
+            <span>Password generation</span>
+            <strong>Local</strong>
+            <small>Web Crypto API</small>
+          </article>
+          <article class="glass stat">
+            <span>Data uploads</span>
+            <strong>None</strong>
+            <small>By this app</small>
+          </article>
+        </div>
+
+        <div class="section-heading">
+          <h2>Your toolkit</h2>
+          <p>Choose a security tool.</p>
+        </div>
+
+        <div class="tool-grid">
+          <button class="glass tool-card" data-open="password">
+            <span class="tool-icon">⚿</span>
+            <strong>Password Lab</strong>
+            <span>Generate strong, random passwords.</span>
+            <b>Open tool →</b>
+          </button>
+          <button class="glass tool-card" data-open="inspector">
+            <span class="tool-icon">⌕</span>
+            <strong>URL Inspector</strong>
+            <span>Inspect links for suspicious patterns.</span>
+            <b>Open tool →</b>
+          </button>
+          <button class="glass tool-card" data-open="tips">
+            <span class="tool-icon">✧</span>
+            <strong>Security Guide</strong>
+            <span>Learn practical online safety habits.</span>
+            <b>Read guide →</b>
+          </button>
+          <button class="glass tool-card" data-open="about">
+            <span class="tool-icon">ⓘ</span>
+            <strong>About & Privacy</strong>
+            <span>Learn how this toolkit works.</span>
+            <b>Learn more →</b>
+          </button>
+        </div>
+      </section>
+
+      <section class="page hidden" id="password">
+        <section class="glass panel">
+          <span class="eyebrow">PASSWORD LAB</span>
+          <h2>Create a stronger password.</h2>
+          <p class="muted">Generated locally using your browser's cryptographic random generator.</p>
+
+          <label for="length">Password length: <strong id="length-value">20</strong></label>
+          <input id="length" type="range" min="8" max="64" value="20">
+
+          <div class="options">
+            <label><input type="checkbox" id="lower" checked> Lowercase</label>
+            <label><input type="checkbox" id="upper" checked> Uppercase</label>
+            <label><input type="checkbox" id="numbers" checked> Numbers</label>
+            <label><input type="checkbox" id="symbols" checked> Symbols</label>
+          </div>
+
+          <button class="primary-button" id="generate">Generate password</button>
+
+          <div class="result">
+            <label for="password-output">Your password</label>
+            <div class="password-output">
+              <input id="password-output" readonly placeholder="Your password appears here">
+              <button class="glass-button" id="copy-password">Copy</button>
+            </div>
+            <p id="password-status" class="muted" aria-live="polite">Choose your options and generate a password.</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="page hidden" id="inspector">
+        <section class="glass panel">
+          <span class="eyebrow">URL INSPECTOR</span>
+          <h2>Think before you click.</h2>
+          <p class="muted">Check URL structure for common warning signs. This is not a live malware or reputation scan.</p>
+
+          <form id="url-form">
+            <label for="url-input">Website URL</label>
+            <input id="url-input" placeholder="https://example.com" required>
+            <div class="button-row">
+              <button class="primary-button" type="submit">Inspect URL</button>
+              <button class="glass-button" type="button" id="clear-url">Clear</button>
+            </div>
+          </form>
+          <div id="url-result" class="result hidden" aria-live="polite"></div>
+          <p class="notice">No website is contacted by this tool. A clean result does not prove a URL is safe.</p>
+        </section>
+      </section>
+
+      <section class="page hidden" id="tips">
+        <section class="glass panel">
+          <span class="eyebrow">SECURITY GUIDE</span>
+          <h2>Build safer habits.</h2>
+          <article class="tip"><strong>01 / Unique passwords</strong><p>Use a password manager and a different strong password for every account.</p></article>
+          <article class="tip"><strong>02 / Multi-factor authentication</strong><p>Enable MFA or passkeys. Keep recovery codes somewhere safe.</p></article>
+          <article class="tip"><strong>03 / Verify links</strong><p>Check the actual domain, not just the message or link display text.</p></article>
+          <article class="tip"><strong>04 / Update your devices</strong><p>Install security updates and remove apps you no longer use.</p></article>
+          <article class="tip"><strong>05 / Back up your files</strong><p>Keep backups and periodically test that you can restore them.</p></article>
+          <article class="tip"><strong>06 / Stop and verify</strong><p>Verify urgent payment requests and never share one-time codes with strangers.</p></article>
+        </section>
+      </section>
+
+      <section class="page hidden" id="about">
+        <section class="glass panel">
+          <span class="eyebrow">ABOUT THIS PROJECT</span>
+          <h2>Security without fake promises.</h2>
+          <article class="tip"><strong>What works</strong><p>Password generation uses the Web Crypto API. URL inspection checks common patterns locally. Navigation and copying are interactive.</p></article>
+          <article class="tip"><strong>What is not included</strong><p>No live threat feeds, account login, IP reputation, malware scanning, cloud sync or device cleaning.</p></article>
+          <article class="tip"><strong>Privacy</strong><p>This code does not send your inputs to a server. Browser and hosting services may have their own data practices.</p></article>
+          <button class="glass-button" id="reset-app">Reset tools</button>
+        </section>
+      </section>
+
+      <footer>
+        <span>CyberSafe Toolkit · Ice Glass UI</span>
+        <span><i class="status-dot"></i> Local tools ready</span>
+      </footer>
+    </main>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+              </html>
+              
